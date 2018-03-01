@@ -17,13 +17,22 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifndef VERSION_MAJOR
+#ifndef POINT_H
+#define POINT_H
 
-#define VERSION_MAJOR "@VERSION_MAJOR@"
-#define VERSION_MINOR "@VERSION_MINOR@"
+#include "massiveengine_config.h"
 
-typedef @DIM_BASED_TYPE@ _dimtype;
-typedef _dimtype coord_t;
-typedef _dimtype dist_t;
+class Point {
+  private:
+    coord_t x;
+    coord_t y;
+  public:
+    Point();
+    Point(coord_t,coord_t);
+    coord_t getX();
+    coord_t getY();
+    void setX(coord_t);
+    void setY(coord_t);
+};
 
 #endif

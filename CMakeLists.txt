@@ -31,6 +31,8 @@ file(GLOB SOURCES "src/*")
 set(VERSION_MAJOR "ALPHA")
 set(VERSION_MINOR "1")
 
+set(DIM_BASED_TYPE "float")
+
 # do configuration
 configure_file (
   "include/massiveengine_config.h.in"

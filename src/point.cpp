@@ -17,13 +17,13 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifndef VERSION_MAJOR
+#include "point.h"
 
-#define VERSION_MAJOR "@VERSION_MAJOR@"
-#define VERSION_MINOR "@VERSION_MINOR@"
+Point::Point(coord_t xc, coord_t yc) : x(xc), y(yc) { }
 
-typedef @DIM_BASED_TYPE@ _dimtype;
-typedef _dimtype coord_t;
-typedef _dimtype dist_t;
+Point::Point() : Point(0,0) { }
 
-#endif
+coord_t Point::getX() { return this->x; }
+coord_t Point::getY() { return this->y; }
+void Point::setX(coord_t v) { this->x = v; }
+void Point::setY(coord_t v) { this->y = v; }

@@ -17,14 +17,10 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifndef VERSION_MAJOR
+#ifndef VECTOR_H
+#define VECTOR_H
 
-#define VERSION_MAJOR "@VERSION_MAJOR@"
-#define VERSION_MINOR "@VERSION_MINOR@"
-
-typedef @DIM_BASED_TYPE@ _dimtype;
-typedef _dimtype coord_t;
-typedef _dimtype dist_t;
-typedef _dimtype angle_t;
+#include "point.h"
+typedef Point Vector;
 
 #endif

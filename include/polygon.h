@@ -17,14 +17,23 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifndef VERSION_MAJOR
+#ifndef POLYGON_H
+#define POLYGON_H
 
-#define VERSION_MAJOR "@VERSION_MAJOR@"
-#define VERSION_MINOR "@VERSION_MINOR@"
+#include "point.h"
+#include "vector.h"
 
-typedef @DIM_BASED_TYPE@ _dimtype;
-typedef _dimtype coord_t;
-typedef _dimtype dist_t;
-typedef _dimtype angle_t;
+class _PVPairing {
+  public:
+    Vector v;
+    Point p;
+};
+
+class Polygon {
+  private:
+    _PVPairing * pointVectors;
+  public:
+    Polygon(_PVPairing *);
+};
 
 #endif

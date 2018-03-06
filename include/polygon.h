@@ -31,9 +31,17 @@ class _PVPairing {
 
 class Polygon {
   private:
+    int size;
     _PVPairing * pointVectors;
+    _PVPairing getPVPairing(int index);
   public:
-    Polygon(_PVPairing *);
+    Polygon(Point *, Vector *, int);
+    ~Polygon();
+    int count();
+    Point getPoint(int);
+    Vector getVector(int);
+    void setPoint(int,Point);
+    void setVector(int,Vector); 
 };
 
 #endif

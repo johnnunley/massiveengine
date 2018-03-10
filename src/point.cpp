@@ -19,11 +19,13 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "point.h"
 
-Point::Point(coord_t xc, coord_t yc) : x(xc), y(yc) { }
+Point::Point(coord_t xc, coord_t yc, coord_t zc) : x(xc), y(yc), z(zc) { }
 
-Point::Point() : Point(0,0) { }
+Point::Point() : Point(0,0,0) { }
 
 coord_t Point::getX() { return this->x; }
 coord_t Point::getY() { return this->y; }
+coord_t Point::getZ() { return this->z; }
 void Point::setX(coord_t v) { this->x = v; }
 void Point::setY(coord_t v) { this->y = v; }
+void Point::setZ(coord_t v) { this->z = v; }

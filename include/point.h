@@ -26,13 +26,17 @@ class Point {
   private:
     coord_t x;
     coord_t y;
+    coord_t z;
   public:
     Point();
-    Point(coord_t,coord_t);
+    Point(coord_t,coord_t,coord_t);
     coord_t getX();
     coord_t getY();
+    coord_t getZ();
     void setX(coord_t);
     void setY(coord_t);
+    void setZ(coord_t);
+
 };
 
 #endif

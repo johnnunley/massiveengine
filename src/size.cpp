@@ -21,7 +21,7 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 Size::Size(dist_t lc, dist_t wc, dist_t hc) : l(lc), w(wc), h(hc) { }
 
-Size::Size() : Size(0,0,0) { }
+Size::Size() : Size(0.0,0.0,0.0) { }
 
 dist_t Size::getLength() { return this->l; }
 dist_t Size::getWidth() { return this->w; }

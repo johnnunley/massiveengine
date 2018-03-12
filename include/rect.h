@@ -22,6 +22,7 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "point.h"
 #include "size.h"
+#include "polygon.h"
 
 class Rectangle {
   private:
@@ -35,12 +36,43 @@ class Rectangle {
     Rectangle(coord_t,coord_t,coord_t,dist_t,dist_t,dist_t);
     Rectangle(Point,Size);
     Rectangle();
+    static Rectangle LRTBFB(coord_t,coord_t,coord_t,coord_t,coord_t,coord_t);
+
     coord_t getX();
     coord_t getY();
     coord_t getZ();
     void setX(coord_t);
     void setY(coord_t);
     void setZ(coord_t);
+
+    dist_t getWidth();
+    dist_t getLength();
+    dist_t getHeight();
+    void setWidth(dist_t);
+    void setLegnth(dist_t);
+    void setHeight(dist_t);
+
+    coord_t left();
+    coord_t right();
+    coord_t top();
+    coord_t back();
+    coord_t front();
+    coord_t bottom();
+
+    Point getPoint();
+    void setPoint(Point);
+    Size getSize();
+    void setSize(Size);
+
+    bool contains(Point);
+    bool containsXYZ(coord_t,coord_t,coord_t);
+    bool containsRect(Rectangle);
+    bool containsPolygon(Polygon);
+
+    bool intersects(Rectangle);
+    bool intersectsPolygon(Polygon);
+
+    //Rectagle getIntersectingRect(Rectangle);
 };
 
 #endif

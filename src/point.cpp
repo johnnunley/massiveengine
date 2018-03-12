@@ -21,7 +21,7 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 Point::Point(coord_t xc, coord_t yc, coord_t zc) : x(xc), y(yc), z(zc) { }
 
-Point::Point() : Point(0,0,0) { }
+Point::Point() : Point(0.0,0.0,0.0) { }
 
 coord_t Point::getX() { return this->x; }
 coord_t Point::getY() { return this->y; }

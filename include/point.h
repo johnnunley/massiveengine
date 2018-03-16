@@ -37,6 +37,9 @@ class Point {
     void setY(coord_t);
     void setZ(coord_t);
 
+    bool operator==(const Point &other);
+    bool operator!=(const Point &other);
+
 };
 
 #endif

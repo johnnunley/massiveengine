@@ -36,6 +36,9 @@ class Size {
     void setLength(dist_t);
     void setWidth(dist_t);
     void setHeight(dist_t);
+
+    bool operator==(const Size &other);
+    bool operator!=(const Size &other);
 };
 
 #endif

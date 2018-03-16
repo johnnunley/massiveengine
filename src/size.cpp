@@ -30,3 +30,13 @@ dist_t Size::getHeight() { return this->h; }
 void Size::setLength(dist_t v) { this->l = v; }
 void Size::setWidth(dist_t v) { this->w = v; }
 void Size::setHeight(dist_t v) { this->h = v; }
+
+bool Size::operator==(const Size &other) {
+  return ((this->l == other->getLength()) &&
+	  (this->w == other->getWidth())  &&
+	  (this->h == other->getHeight()));
+}
+
+bool Size::operator!=(const Size &other) {
+  return !(*this == other);
+}

@@ -17,34 +17,22 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifndef POLYGON_H
-#define POLYGON_H
+#ifndef RANGE_H
+#define RANGE_H
 
-#include "point.h"
-#include "vector.h"
-
-class _PVPairing {
-  public:
-    Vector v;
-    Point p;
-};
-
-class Polygon {
+template <typename T>
+class Range {
   private:
-    int size;
-    _PVPairing * pointVectors;
-    _PVPairing getPVPairing(int index);
+    T max;
+    T min;
   public:
-    Polygon(Point *, Vector *, int);
-    ~Polygon();
-    int count();
-    Point getPoint(int);
-    Vector getVector(int);
-    void setPoint(int,Point);
-    void setVector(int,Vector); 
-
-    bool operator==(const Point &other);
-    bool operator!=(const Point &other);
+    Range(T,T);
+    T getMax();
+    T getMin();
+    void setMax(T);
+    void setMin(T);
+    bool compare(T);
+    static bool process(T,T,T);
 };
 
 #endif

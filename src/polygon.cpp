@@ -54,3 +54,17 @@ void Polygon::setPoint(int index, Point p) {
 void Polygon::setVector(int index, Vector v) {
   this->pointVectors[index].v = v;
 }
+
+bool Polygon::operator==(const Point &other) {
+  if (this->size == other->count()) return false;
+  for (int i = 0; i < this->size; i++) {
+    if ((this->getPoint(i) != other->getPoint(i)) ||
+	(this->getVector(i) != other->getVector(i)))
+	    return false;
+  }
+  return true;
+}
+
+bool Polygon::operator!=(const Point &other) {
+  return !(*this == other);
+}

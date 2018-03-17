@@ -19,13 +19,22 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "rect.h"
 
-Rectangle::Rectangle(coord_t x, coord_t y, coord_t z, coord_t w, coord_t l, coord_t h) {
-  this->x = x;
-  this->y = y;
-  this->z = z;
-  this->w = w;
-  this->l = l;
-  this->h = h;
+Rectangle::Rectangle(coord_t xc, coord_t yc, coord_t zc, coord_t wc, coord_t lc, coord_t hc) :  x(xc), y(yc), z(zc), w(wc), l(lc), h(hc), xwidth(xc,xc+wc), ylength(yc,yc+lc), zheight(zc,zc+hc) {
+}
+
+void Rectangle::updateRanges(bool updateX, bool updateY, bool updateZ, bool updatedCoord) {
+  if (updateX) {
+    if (updatedCoord) xwidth.setMin(this->left());
+    xwidth.senMax(this->right());
+  }
+  if (updateY) {
+    if (updatedCoord) ylength.setMin(this->top());
+    ylength.setMax(this->bottom());
+  }
+  if (updateZ) {
+    if (updatedCoord) zheight.setMin(this->front());
+    zheight.setMax(this->back());
+  }
 }
 
 Rectangle::Rectangle(Point p, Size s) : Rectangle(p.getX(),p.getY(),p.getZ(),s.getWidth(),s.getLength(),s.getHeight()) { }
@@ -40,17 +49,17 @@ coord_t Rectangle::getX() { return this->x; }
 coord_t Rectangle::getY() { return this->y; }
 coord_t Rectangle::getZ() { return this->z; }
 
-void Rectangle::setX(coord_t v) { this->x = v; }
-void Rectangle::setY(coord_t v) { this->y = v; }
-void Rectangle::setZ(coord_t v) { this->z = v; }
+void Rectangle::setX(coord_t v) { if (this->x != v) { this->x = v; this->updateRanges(true,false,false,true); } }
+void Rectangle::setY(coord_t v) { if (this->y != v) {this->y = v; this->updateRanges(false,true,false,true); } }
+void Rectangle::setZ(coord_t v) { if (this->z != v) {this->z = v; this->updateRanges(false,false,true,true); } }
 
 dist_t Rectangle::getWidth() { return this->w; }
 dist_t Rectangle::getLength() { return this->l; }
 dist_t Rectangle::getHeight() { return this->h; }
 
-void Rectangle::setWidth(dist_t v) { this->w = v; }
-void Rectangle::setLength(dist_t v) { this->l = v; }
-void Rectangle::setHeight(dist_t v) { this->h = v; }
+void Rectangle::setWidth(dist_t v) { if (this->w != v) { this->w = v; this->updateRanges(true,false,false,false); } }
+void Rectangle::setLength(dist_t v) { if (this->l != v) {this->l = v; this->updateRanges(false,true,false,false); } }
+void Rectangle::setHeight(dist_t v) { if (this->h != v) {this->h = v; this->updateRanges(false,false,true,false); } }
 
 
 coord_t Rectangle::left() { return this->x; }
@@ -64,15 +73,15 @@ Point Rectangle::getPoint() { return Point(this->x,this->y,this->z); }
 Size Rectangle::getSize() { return Size(this->w,this->l,this->h); }
 
 void Rectangle::setPoint(Point p) {
-  this->x = p.getX();
-  this->y = p.getY();
-  this->z = p.getZ();
+  this->setX(p.getX());
+  this->setY(p.getY());
+  this->setZ(p.getZ());
 }
 
 void Rectangle::setSize(Size s) {
-  this->w = s.getWidth();
-  this->l = s.getLength();
-  this->h = s.getHeight();
+  this->setWidth(s.getWidth());
+  this->setLength(s.getLength());
+  this->setHeight(s.getHeight());
 }
 
 bool Rectangle::containsXYZ(coord_t x, coord_t y, coord_t z) {
@@ -100,8 +109,9 @@ bool Rectangle::containsPolygon(Polygon poly) {
 }
 
 bool Rectangle::intersects(Rectangle rect) {
- // TODO: implement this once we have ranges
- return false;
+  return ((this->xwidth.compare(rect.left())   || this->xwidth.compare(rect.right()))   ||
+	  (this->ylength.compare(rect.top())   || this->ylength.compare(rect.bottom())) ||
+	  (this->xlength.compare(rect.front()) || this->zlength.compare(rect.back())));
 }
 
 bool Rectangle::intersectsPolygon(Polygon poly) {
@@ -110,4 +120,13 @@ bool Rectangle::intersectsPolygon(Polygon poly) {
       return true;
   }
   return false;
+}
+
+bool Rectangle::operator==(const Rectangle &other) {
+  return ((this->getPoint() == other->getPoint()) &&
+          (this->getSize() == other->getSize()));
+}
+
+bool Rectangle::operator!=(const Rectangle &other) {
+  return !(*this == other);
 }

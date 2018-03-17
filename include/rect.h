@@ -23,6 +23,7 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 #include "point.h"
 #include "size.h"
 #include "polygon.h"
+#include "rect.h"
 
 class Rectangle {
   private:
@@ -32,6 +33,13 @@ class Rectangle {
     dist_t w;
     dist_t l;
     dist_t h;
+
+    // i define my ranges here and keep them in the rect to reduce overhead
+    Range xwidth;
+    Range ylength;
+    Range zheight;
+
+    void updateRanges(bool,bool,bool,bool);
   public:
     Rectangle(coord_t,coord_t,coord_t,dist_t,dist_t,dist_t);
     Rectangle(Point,Size);
@@ -72,7 +80,10 @@ class Rectangle {
     bool intersects(Rectangle);
     bool intersectsPolygon(Polygon);
 
-    //Rectagle getIntersectingRect(Rectangle);
+    Rectagle getIntersectingRect(Rectangle);
+
+    bool operator==(const Rectangle &other);
+    bool operator!=(const Rectangle &other); 
 };
 
 #endif

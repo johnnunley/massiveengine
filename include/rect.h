@@ -36,9 +36,9 @@ class Rectangle {
     dist_t h;
 
     // i define my ranges here and keep them in the rect to reduce overhead
-    Range xwidth;
-    Range ylength;
-    Range zheight;
+    Range<coord_t> xwidth;
+    Range<coord_t> ylength;
+    Range<coord_t> zheight;
 
     void updateRanges(bool,bool,bool,bool);
   public:
@@ -81,7 +81,7 @@ class Rectangle {
     bool intersects(Rectangle);
     bool intersectsPolygon(Polygon);
 
-    Rectagle getIntersectingRect(Rectangle);
+    Rectangle getIntersectingRect(Rectangle);
 
     bool operator==(const Rectangle &other);
     bool operator!=(const Rectangle &other); 

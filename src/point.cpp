@@ -31,9 +31,9 @@ void Point::setY(coord_t v) { this->y = v; }
 void Point::setZ(coord_t v) { this->z = v; }
 
 bool Point::operator==(const Point &other) {
-  return ((this->x == other->getX()) &&
-	  (this->y == other->getY()) &&
-	  (this->z == other->getZ()));
+  return ((this->x == other.getX()) &&
+	  (this->y == other.getY()) &&
+	  (this->z == other.getZ()));
 }
 
 bool Point::operator!=(const Point &other) {

@@ -23,6 +23,6 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 #include "massiveengine_config.h"
 
 int main(int argc, char **argv) {
-  cout << "Welcome to massiveengine v" << VERSION_MAJOR << "." << VERSION_MINOR << endl;
+  std::cout << "Welcome to massiveengine v" << VERSION_MAJOR << "." << VERSION_MINOR << std::endl;
   return 0;
 }

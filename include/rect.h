@@ -24,6 +24,7 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 #include "size.h"
 #include "polygon.h"
 #include "rect.h"
+#include "range.h"
 
 class Rectangle {
   private:

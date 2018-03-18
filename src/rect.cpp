@@ -19,13 +19,13 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "rect.h"
 
-Rectangle::Rectangle(coord_t xc, coord_t yc, coord_t zc, coord_t wc, coord_t lc, coord_t hc) :  x(xc), y(yc), z(zc), w(wc), l(lc), h(hc), xwidth(xc,xc+wc), ylength(yc,yc+lc), zheight(zc,zc+hc) {
+Rectangle::Rectangle(coord_t xc, coord_t yc, coord_t zc, dist_t wc, dist_t lc, dist_t hc) :  x(xc), y(yc), z(zc), w(wc), l(lc), h(hc), xwidth(xc,xc+wc), ylength(yc,yc+lc), zheight(zc,zc+hc) {
 }
 
 void Rectangle::updateRanges(bool updateX, bool updateY, bool updateZ, bool updatedCoord) {
   if (updateX) {
     if (updatedCoord) xwidth.setMin(this->left());
-    xwidth.senMax(this->right());
+    xwidth.setMax(this->right());
   }
   if (updateY) {
     if (updatedCoord) ylength.setMin(this->top());

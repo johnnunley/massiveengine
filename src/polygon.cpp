@@ -19,20 +19,13 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "polygon.h"
 
-Polygon::Polygon(Point *p, Vector *p, int s) {
+Polygon::Polygon(Point *p, int s) {
   this->size = s;
-  this->pointVectors = new _PVPairing[s]; 
-  for (int i = 0; i < s; i++) {
-    this->pointVectors[s] = _PVPairing(p[s],v[s]);
-  } 
+  this->points = p;
 }
 
 Polygon::~Polygon() {
-  delete this->pointVectors;
-}
-
-_PVPairing Polygon::getPVPairing(int index) {
-  return this->pointVectors[index];
+  delete this->points;
 }
 
 int Polygon:count() {
@@ -40,27 +33,23 @@ int Polygon:count() {
 }
 
 Point Polygon::getPoint(int index) {
-  return this->getPVPairing(index).p;
+  return this->points[index];
 }
 
 Vector Polygon::getVector(int index) {
-  return this->getPVPairing(index).v;
+  // TODO: vector calculations
+  return this->points[index];
 }
 
 void Polygon::setPoint(int index, Point p) {
-  this->pointVectors[index].p = p;
-}
-
-void Polygon::setVector(int index, Vector v) {
-  this->pointVectors[index].v = v;
+  this->points[index] = p;
 }
 
 bool Polygon::operator==(const Point &other) {
-  if (this->size == other.count()) return false;
+  if (this->size == other.size) return false;
   for (int i = 0; i < this->size; i++) {
-    if ((this->getPoint(i) != other.getPoint(i)) ||
-	(this->getVector(i) != other.getVector(i)))
-	    return false;
+    if (this->getPoint(i) != other.points[index])
+      return false;
   }
   return true;
 }

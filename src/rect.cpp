@@ -123,8 +123,12 @@ bool Rectangle::intersectsPolygon(Polygon poly) {
 }
 
 bool Rectangle::operator==(const Rectangle &other) {
-  return ((this->getPoint() == other.getPoint()) &&
-          (this->getSize() == other.getSize()));
+  return ((this->x == other.x) &&
+          (this->y == other.y) &&
+          (this->z == other.z) &&
+          (this->w == other.w) &&
+          (this->l == other.l) &&
+          (this->h == other.h));
 }
 
 bool Rectangle::operator!=(const Rectangle &other) {

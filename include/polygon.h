@@ -23,25 +23,20 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 #include "point.h"
 #include "vector.h"
 
-class _PVPairing {
-  public:
-    Vector v;
-    Point p;
-};
-
 class Polygon {
   private:
     int size;
-    _PVPairing * pointVectors;
-    _PVPairing getPVPairing(int index);
+    Point points;
   public:
-    Polygon(Point *, Vector *, int);
+    Polygon(Point *, int);
     ~Polygon();
     int count();
     Point getPoint(int);
     Vector getVector(int);
     void setPoint(int,Point);
-    void setVector(int,Vector); 
+
+    // NOTE: this is probably impossible with vector calculations, and is not to be trifled with
+    //void setVector(int,Vector); 
 
     bool operator==(const Point &other);
     bool operator!=(const Point &other);

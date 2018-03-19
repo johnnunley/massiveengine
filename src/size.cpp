@@ -32,9 +32,9 @@ void Size::setWidth(dist_t v) { this->w = v; }
 void Size::setHeight(dist_t v) { this->h = v; }
 
 bool Size::operator==(const Size &other) {
-  return ((this->l == other.getLength()) &&
-	  (this->w == other.getWidth())  &&
-	  (this->h == other.getHeight()));
+  return ((this->l == other.l) &&
+	  (this->w == other.w) &&
+	  (this->h == other.h));
 }
 
 bool Size::operator!=(const Size &other) {

@@ -28,7 +28,7 @@ Polygon::~Polygon() {
   delete this->points;
 }
 
-int Polygon:count() {
+int Polygon::count() {
   return this->size;
 }
 
@@ -45,15 +45,15 @@ void Polygon::setPoint(int index, Point p) {
   this->points[index] = p;
 }
 
-bool Polygon::operator==(const Point &other) {
+bool Polygon::operator==(const Polygon &other) {
   if (this->size == other.size) return false;
   for (int i = 0; i < this->size; i++) {
-    if (this->getPoint(i) != other.points[index])
+    if (this->getPoint(i) != other.points[i])
       return false;
   }
   return true;
 }
 
-bool Polygon::operator!=(const Point &other) {
+bool Polygon::operator!=(const Polygon &other) {
   return !(*this == other);
 }

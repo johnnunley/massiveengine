@@ -105,13 +105,13 @@ bool Rectangle::containsPolygon(Polygon poly) {
     if (this->contains(pt))
       count++;
   }
-  return count >= poly.size();
+  return count >= poly.count();
 }
 
 bool Rectangle::intersects(Rectangle rect) {
   return ((this->xwidth.compare(rect.left())   || this->xwidth.compare(rect.right()))   ||
 	  (this->ylength.compare(rect.top())   || this->ylength.compare(rect.bottom())) ||
-	  (this->xlength.compare(rect.front()) || this->zlength.compare(rect.back())));
+	  (this->zheight.compare(rect.front()) || this->zheight.compare(rect.back())));
 }
 
 bool Rectangle::intersectsPolygon(Polygon poly) {

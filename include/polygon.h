@@ -26,7 +26,7 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 class Polygon {
   private:
     int size;
-    Point points;
+    Point *points;
   public:
     Polygon(Point *, int);
     ~Polygon();
@@ -38,8 +38,8 @@ class Polygon {
     // NOTE: this is probably impossible with vector calculations, and is not to be trifled with
     //void setVector(int,Vector); 
 
-    bool operator==(const Point &other);
-    bool operator!=(const Point &other);
+    bool operator==(const Polygon &other);
+    bool operator!=(const Polygon &other);
 };
 
 #endif

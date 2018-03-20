@@ -17,23 +17,14 @@ along with massiveengine.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#ifndef VECTOR_H
-#define VECTOR_H
+#include "vector.h"
 
-#include "massiveengine_config.h"
-class Vector {
-  private:
-    angle_t x;
-    angle_t y;
-  public:
-    Vector(angle_t,angle_t);
-    Vector();
+Vector::Vector(angle_t xc, angle_t yc) : x(xc), y(yc) { }
 
-    angle_t getX();
-    angle_t getY();
+Vector::Vector() : Vector(0.0,0.0) { }
 
-    void setX(angle_t);
-    void setY(angle_t);
-};
+angle_t Vector::getX() { return this->x; }
+angle_t Vector::getY() { return this->y; }
 
-#endif
+void Vector::setX(angle_t v) { this->x = v; }
+void Vector::setY(angle_t v) { this->y = v; }

@@ -42,4 +42,6 @@ class Point {
 
 };
 
+typedef Point Scale;
+
 #endif

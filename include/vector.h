@@ -36,4 +36,7 @@ class Vector {
     void setY(angle_t);
 };
 
+typedef Vector Point2D;
+typedef Vector Rotation;
+
 #endif

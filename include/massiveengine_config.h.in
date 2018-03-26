@@ -26,5 +26,6 @@ typedef @DIM_BASED_TYPE@ _dimtype;
 typedef _dimtype coord_t;
 typedef _dimtype dist_t;
 typedef _dimtype angle_t;
+typedef _dimtype speed_t;
 
 #endif

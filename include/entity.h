@@ -28,6 +28,14 @@ class Entity {
     Model model;
     Rectangle *hitboxes;
     int size;
+
+    speed_t xaccel;
+    speed_t yaccel;
+    speed_t zaccel;
+
+    speed_t xrotate;
+    speed_t yrotate;
+    speed_t zrotate;
   public:
     Entity(Model,Rectangle *,int);
     ~Entity();
